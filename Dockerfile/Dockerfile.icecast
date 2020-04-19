@@ -1,0 +1,15 @@
+FROM debian:stable-slim
+MAINTAINER Luca Rossi "luca@acido.be"
+
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install icecast2 python-setuptools sudo cron-apt
+RUN apt-get -y  clean
+RUN chown -R icecast2 /etc/icecast2
+
+CMD ["/start.sh"]
+EXPOSE 8000
+
+ADD ./icecast-config/icecast.xml /root/icecast.xml.template
+ADD ./icecast-config/start.sh /start.sh

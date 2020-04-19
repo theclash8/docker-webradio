@@ -1,0 +1,52 @@
+version: '2'
+
+services:
+  liquidsoap:
+    image: liquidsoap-radiopas
+    volumes:
+    - ./liquidsoap/config:/config
+    - ./liquidsoap/playlists:/playlists
+    - ./liquidsoap/data:/data
+    #- ./liquidsoap/data:/data
+    - /home/luca/mp3:/mp3
+    - /etc/localtime:/etc/localtime:ro
+    networks:
+    - internal-network
+    environment:
+      - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
+ 
+  icecast:
+    image: icecast-radiopas
+    volumes:
+      - ./icecast/logs/:/var/log/icecast2
+      - ./icecast/config/:/config
+      - /etc/localtime:/etc/localtime:ro 
+    networks:
+      - default
+    environment:
+      - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
+      - ICECAST_ADMIN_PASSWORD=${ICECAST_ADMIN_PASSWORD}
+      - ICECAST_PASSWORD=${ICECAST_PASSWORD}
+      - ICECAST_RELAY_PASSWORD=${ICECAST_RELAY_PASSWORD}
+    ports:
+    - "8000:8000"
+    networks:
+    - internal-network
+
+  mopidy:
+    image: mopidy-radiopas
+    volumes:
+    - ./mopidy/config:/config
+    - /etc/localtime:/etc/localtime:ro
+    networks:
+    - internal-network
+    environment:
+    - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
+    - SPOTIFY_USERNAME=${SPOTIFY_USERNAME}
+    - SPOTIFY_PASSWORD=${SPOTIFY_PASSWORD}
+    - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+    - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+
+networks:
+  internal-network:
+    external: false

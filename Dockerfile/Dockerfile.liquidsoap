@@ -1,0 +1,20 @@
+FROM ubuntu:trusty
+
+MAINTAINER Luca Rossi "luca@acido.be"
+
+RUN apt-get -y update
+#RUN apt-get -q -y install liquidsoap festival sox libavcodec58 libavfilter7 libavformat58 ffmpeg libmp3lame0 inetutils-ping net-tools supervisor
+RUN apt-get -y install liquidsoap supervisor festival sox
+RUN apt-get clean
+
+RUN mkdir /config
+RUN useradd -ms /bin/bash newuser
+RUN chown -R liquidsoap: /config -R
+
+
+CMD ["/start.sh"]
+ADD ./liquidsoap-config/passwords.liq /root/passwords.liq.template
+ADD ./liquidsoap-config/main.liq /root/main.liq.template
+ADD ./liquidsoap-config/supervisord-liquidsoap.conf /etc/supervisor/conf.d/liquidsoap.conf
+ADD ./liquidsoap-config/liquid-start.sh /liquid-start.sh
+ADD ./liquidsoap-config/start.sh /start.sh
