@@ -2,7 +2,9 @@ version: '2'
 
 services:
   liquidsoap:
-    image: liquidsoap-radiopas
+    build:
+      context: ./Dockerfile
+      dockerfile: Dockerfile.liquidsoap
     volumes:
     - ./liquidsoap/config:/config
     - ./liquidsoap/playlists:/playlists
@@ -16,7 +18,10 @@ services:
       - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
  
   icecast:
-    image: icecast-radiopas
+    build:
+      context: ./Dockerfile
+      dockerfile: Dockerfile.icecast
+
     volumes:
       - ./icecast/logs/:/var/log/icecast2
       - ./icecast/config/:/config
@@ -34,7 +39,9 @@ services:
     - internal-network
 
   mopidy:
-    image: mopidy-radiopas
+    build:
+      context: ./Dockerfile
+      dockerfile: Dockerfile.mopidy
     volumes:
     - ./mopidy/config:/config
     - /etc/localtime:/etc/localtime:ro
