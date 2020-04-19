@@ -10,7 +10,6 @@ services:
     - ./liquidsoap/playlists:/playlists
     - ./liquidsoap/data:/data
     #- ./liquidsoap/data:/data
-    - /home/luca/mp3:/mp3
     - /etc/localtime:/etc/localtime:ro
     networks:
     - internal-network
