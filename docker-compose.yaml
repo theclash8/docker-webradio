@@ -14,8 +14,7 @@ services:
     networks:
     - internal-network
     environment:
-      - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
- 
+    - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
   icecast:
     build:
       context: ./Dockerfile
@@ -52,6 +51,8 @@ services:
     - SPOTIFY_PASSWORD=${SPOTIFY_PASSWORD}
     - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
     - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+    ports:
+    - "6680:6680"
 
 networks:
   internal-network:
