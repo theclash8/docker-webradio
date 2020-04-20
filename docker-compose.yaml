@@ -53,6 +53,19 @@ services:
     - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
     ports:
     - "6680:6680"
+    
+  httpd:
+    build:
+      context: ./Dockerfile
+      dockerfile: Dockerfile.http
+    volumes:
+    - ./http/public_html:/usr/local/apache2/htdocs
+    environment:
+    - WEBRADIO_HOST=${WEBRADIO_HOST}
+    ports:
+    - "80:80"
+    networks:
+    - internal-network
 
 networks:
   internal-network:

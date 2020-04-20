@@ -1,0 +1,6 @@
+FROM httpd:2.4
+COPY ./httpd-config/index.html.template /root/index.html.template
+
+ADD ./httpd-config/start.sh /start.sh
+CMD ["/start.sh"]
+
