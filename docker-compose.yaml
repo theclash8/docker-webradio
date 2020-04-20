@@ -63,7 +63,7 @@ services:
     environment:
     - WEBRADIO_HOST=${WEBRADIO_HOST}
     ports:
-    - "80:80"
+    - "${WEBRADIO_PORT}:80"
     networks:
     - internal-network
 
