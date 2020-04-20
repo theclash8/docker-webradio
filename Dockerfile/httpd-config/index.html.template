@@ -32,7 +32,7 @@ background: url('data:image/jpeg;base64,/9j/4QCsRXhpZgAATU0AKgAAAAgAAwE7AAIAAAA0
   <div class="purple-square">
     <center>
       <h1>Your Web Radio</h1>
-      <audio controls src="http://WEBRADIO_HOST/test"></audio>
+      <audio controls src="http://WEBRADIO_HOST:8000/test"></audio>
     </center>
   </div>
 </div>
