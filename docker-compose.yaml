@@ -7,9 +7,8 @@ services:
       dockerfile: Dockerfile.liquidsoap
     volumes:
     - ./liquidsoap/config:/config
-    - ./liquidsoap/playlists:/playlists
-    - ./liquidsoap/data:/data
-    #- ./liquidsoap/data:/data
+    - ./playlists:/playlists
+    - ./data:/data
     - /etc/localtime:/etc/localtime:ro
     networks:
     - internal-network
@@ -42,6 +41,9 @@ services:
       dockerfile: Dockerfile.mopidy
     volumes:
     - ./mopidy/config:/config
+    - ./data/:/data
+    - ./data:/data2
+    - ./playlist:/playlist
     - /etc/localtime:/etc/localtime:ro
     networks:
     - internal-network
