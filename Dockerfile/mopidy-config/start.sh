@@ -24,7 +24,7 @@ set_val() {
 
 if [ ! -f "/config/mopidy.conf" ]; then 
 	cp /root/mopidy.conf.template /config/mopidy.conf
-	set_val $ICECAST_SOURCE_PASSWORD source_password
+	set_val $MOPIDY_SOURCE_PASSWORD source_password
 	set_val $SPOTIFY_USERNAME username
 	set_val $SPOTIFY_PASSWORD spoty_password
 	set_val $SPOTIFY_CLIENT_ID client_id

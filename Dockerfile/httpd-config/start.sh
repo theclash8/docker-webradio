@@ -21,5 +21,5 @@ fi
 
 set -e
 
-htpasswd -b -c /.htpasswd admin ${ADMIN_PASSWORD}
+htpasswd -b -c /.htpasswd admin ${HTTP_ADMIN_PASSWORD}
 httpd-foreground
