@@ -7,7 +7,7 @@ RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add -
 RUN wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
 RUN apt-get update
 RUN apt-get -y install mopidy mopidy-spotify mpc mopidy-mpd mopidy-mpris mopidy-local
-RUN python3 -m pip install Mopidy-Youtube
+RUN python3 -m pip install Mopidy-Youtube Mopidy-MusicBox-Webclient
 
 ADD ./mopidy-config/mopidy.conf /root/mopidy.conf.template
 ADD ./mopidy-config/start.sh /start.sh

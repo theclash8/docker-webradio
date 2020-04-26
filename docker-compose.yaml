@@ -27,7 +27,7 @@ services:
       - default
     environment:
       - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
-      - ICECAST_ADMIN_PASSWORD=${ICECAST_ADMIN_PASSWORD}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - ICECAST_PASSWORD=${ICECAST_PASSWORD}
       - ICECAST_RELAY_PASSWORD=${ICECAST_RELAY_PASSWORD}
     ports:
@@ -53,8 +53,6 @@ services:
     - SPOTIFY_PASSWORD=${SPOTIFY_PASSWORD}
     - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
     - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
-    ports:
-    - "6680:6680"
     
   httpd:
     build:
@@ -64,6 +62,7 @@ services:
     - ./http/public_html:/usr/local/apache2/htdocs
     environment:
     - WEBRADIO_HOST=${WEBRADIO_HOST}
+    - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     ports:
     - "${WEBRADIO_PORT}:80"
     networks:

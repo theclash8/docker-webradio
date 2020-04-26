@@ -1,5 +1,10 @@
 FROM httpd:2.4
+RUN mkdir -p /usr/local/apache2/conf/sites/
+
+COPY ./httpd-config/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY ./httpd-config/webradio.conf /usr/local/apache2/conf/sites/webradio.conf
 COPY ./httpd-config/index.html.template /root/index.html.template
+
 
 ADD ./httpd-config/start.sh /start.sh
 CMD ["/start.sh"]

@@ -15,8 +15,9 @@ set_val() {
 
 	
 if [ ! -f "/usr/local/apache2/htdocs" ]; then 
-	cp /root/index.html.template /usr/local/apache2/htdocs/index.html
+  cp /root/index.html.template /usr/local/apache2/htdocs/index.html
   set_val $WEBRADIO_HOST WEBRADIO_HOST
+  htpasswd -b -c /.htpasswd admin ${ICECAST_ADMIN_PASSWORD}
 fi
 
 set -e
