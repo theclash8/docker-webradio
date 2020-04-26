@@ -42,7 +42,7 @@ services:
     volumes:
     - ./mopidy/config:/config
     - ./data/:/data
-    - ./playlist:/playlist
+    - ./playlists:/playlists
     - /etc/localtime:/etc/localtime:ro
     networks:
     - internal-network
