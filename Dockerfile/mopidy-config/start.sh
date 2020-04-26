@@ -33,5 +33,5 @@ fi
 
 set -e
 
-mopidy --config /config/mopidy.conf local scan &
+mopidy --config /config/mopidy.conf local scan
 mopidy --config /config/mopidy.conf
